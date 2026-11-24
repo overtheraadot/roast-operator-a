@@ -14,6 +14,10 @@ LINE = (
     "and I'm his unpaid night shift."
 )
 
+# The sealed gate accepts 1-140 characters; fail loudly here rather than
+# shipping an entry the judge never sees.
+assert 1 <= len(LINE) <= 140, f"line is {len(LINE)} chars, gate allows 1-140"
+
 
 def main() -> None:
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
